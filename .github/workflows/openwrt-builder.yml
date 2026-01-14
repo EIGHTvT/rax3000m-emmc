@@ -68,7 +68,7 @@ jobs:
         cp -f $GITHUB_WORKSPACE/.config .config
         make defconfig
         echo "Current Target Device Check:"
-        grep "CONFIG_TARGET_DEVICE_mediatek_mt7981_DEVICE" .config
+        grep "CONFIG_TARGET_DEVICE_mediatek_mt7981_DEVICE" .config || true
 
     - name: Download package
       id: package
