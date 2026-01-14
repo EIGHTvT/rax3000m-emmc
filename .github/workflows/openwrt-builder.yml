@@ -61,14 +61,13 @@ jobs:
     - name: Load custom configuration
       run: |
         [ -e files ] && mv files openwrt/files
-        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        chmod +x $DIY_P2_SH
-        cd openwrt
+        cd openwrt 
+        chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
         $GITHUB_WORKSPACE/$DIY_P2_SH
         ./scripts/feeds install -a
         cp -f $GITHUB_WORKSPACE/.config .config
         make defconfig
-        echo "Current Target Device:"
+        echo "Current Target Device Check:"
         grep "CONFIG_TARGET_DEVICE_mediatek_mt7981_DEVICE" .config
 
     - name: Download package
